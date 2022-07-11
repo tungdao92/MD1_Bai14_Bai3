@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="battat" onclick="BatTat(this.id)">On</button>
+<button id="betterry1">PIN</button>
+<button id="send1" onclick="senMessage(this.id)">Send!</button>
+<br>
+<textarea style="width: 300px" id="text1"></textarea> <br>
+<hr>
+<button id="battat1" onclick="BatTat(this.id)">On</button>
+<button id="betterry2">PIN</button>
+<button id="send2" onclick="senMessage(this.id)">Send!</button>
+<br>
+<textarea style="width: 300px" id="text2"></textarea> <br>
+
+<script>
+    let flag1=true;
+    let flag2=true
+    function BatTat(id) {
+     if (id=='battat'){
+         flag1=!flag1
+         if (flag1){
+             document.getElementById(id).innerHTML="ON"
+         } else {
+             document.getElementById(id).innerHTML="OFF"
+         }
+
+     }else {
+         flag2=!flag2
+         if (flag2){
+             document.getElementById(id).innerHTML="ON"
+         } else {
+             document.getElementById(id).innerHTML="OFF"
+         }
+
+     }
+
+    }
+    class MobiPhone {
+        name;
+        betterry;
+        outBox;
+        inBox;
+
+        constructor(name, betterry, outBox, inBox) {
+            this.name = name;
+            this.betterry = betterry;
+            this.outBox=[];
+            this.inBox=[];
+        }
+
+        getName() {
+            return this.name
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+        getBetterry(){
+            return this.betterry
+        }
+        setBetterry(betterry){
+            this.betterry = betterry;
+        }
+        getOutBox(){
+            return this.outBox
+        }
+        setOutBox(outBox){
+            this.outBox = outBox
+        }
+        getInBox(){
+            return this.inBox
+        }
+        setInBox(inBox){
+            this.inBox = inBox
+        }
+    }
+    let Iphone = new MobiPhone('iphone', 100);
+    let SamSung= new MobiPhone('samsung', 100);
+    document.getElementById('betterry1').innerHTML = Iphone.getBetterry()+ '%'
+    document.getElementById('betterry2').innerHTML = Iphone.getBetterry()+ '%'
+
+    function senMessage(id) {
+        if (id=='send1'){
+            Iphone.getOutBox().push(document.getElementById('text1').value);
+            console.log(Iphone.getInBox())
+        } else {
+            Iphone.getInBox().push(document.getElementById('text1').value)
+        }
+
+
+    }
+
+</script>
+</body>
+</html>
